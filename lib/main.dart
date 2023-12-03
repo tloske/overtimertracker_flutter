@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:overtimertracker_flutter/Components/custom_scroll_behavior.dart';
-import 'package:overtimertracker_flutter/Models/Providers/overtime_provider.dart';
 import 'package:overtimertracker_flutter/Pages/main_page.dart';
-import 'package:overtimertracker_flutter/Pages/overtime_page.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +31,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
       home: const MainPage(),

@@ -12,6 +12,15 @@ class OvertimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      tileColor: Theme.of(context).colorScheme.secondary,
+      textColor: Theme.of(context).colorScheme.onSecondary,
+      shape: Border(
+        bottom: BorderSide(
+          strokeAlign: BorderSide.strokeAlignInside,
+          color: Theme.of(context).colorScheme.onSecondaryContainer,
+          width: 2,
+        ),
+      ),
       title: Text(
         dateFormat.format(overtimeData.date),
       ),

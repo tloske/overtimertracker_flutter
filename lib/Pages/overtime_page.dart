@@ -13,14 +13,29 @@ class OvertimePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
+          shape: Border(
+            bottom: BorderSide(
+              strokeAlign: BorderSide.strokeAlignInside,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
+              width: 2,
+            ),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
           centerTitle: true,
-          title: Column(
-            children: [
-              const Text("Overtime Tracker"),
-              Text(
-                  "Overtime: ${Provider.of<OvertimeProvider>(context).overtimeSum}")
-            ],
+          title: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              children: [
+                const Text("Overtime Tracker"),
+                Text(
+                  "Overtime: ${Provider.of<OvertimeProvider>(context).overtimeSum}",
+                  style: const TextStyle(fontSize: 16),
+                )
+              ],
+            ),
           ),
         ),
         floatingActionButton: ExpandableFab(distance: 112.0, children: [
@@ -28,6 +43,7 @@ class OvertimePage extends StatelessWidget {
             icon: const Icon(Icons.add),
             onPressed: () => {
               showModalBottomSheet(
+                isScrollControlled: true,
                 context: context,
                 builder: (_) => ListenableProvider.value(
                     value:
@@ -40,6 +56,7 @@ class OvertimePage extends StatelessWidget {
             icon: const Icon(Icons.remove),
             onPressed: () => {
               showModalBottomSheet(
+                isScrollControlled: true,
                 context: context,
                 builder: (_) => ListenableProvider.value(
                     value:

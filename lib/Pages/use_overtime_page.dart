@@ -47,10 +47,11 @@ class _UseOvertimePageState extends State<UseOvertimePage> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text("Date"),
               TextButton(
@@ -75,33 +76,30 @@ class _UseOvertimePageState extends State<UseOvertimePage> {
               ),
             ],
           ),
-          Expanded(
-            child: TextField(
-              onChanged: (value) {
-                overtime = -double.parse(value);
-              },
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text(
-                  "Hours",
-                  style: TextStyle(fontSize: 12),
+          TextField(
+            onChanged: (value) {
+              overtime = -double.parse(value);
+            },
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              label: Text(
+                "Hours",
+                style: TextStyle(fontSize: 12),
+              ),
+            ),
+            textAlign: TextAlign.center,
+            controller: overtimeTextController,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(
+                RegExp(r'\d+[,.]?\d*'),
+              ),
+              TextInputFormatter.withFunction(
+                (oldValue, newValue) => newValue.copyWith(
+                  text: newValue.text.replaceAll(',', '.'),
                 ),
               ),
-              textAlign: TextAlign.center,
-              controller: overtimeTextController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                  RegExp(r'\d+[,.]?\d*'),
-                ),
-                TextInputFormatter.withFunction(
-                  (oldValue, newValue) => newValue.copyWith(
-                    text: newValue.text.replaceAll(',', '.'),
-                  ),
-                ),
-              ],
-            ),
+            ],
           ),
           SizedBox(
             width: 200,
@@ -118,7 +116,10 @@ class _UseOvertimePageState extends State<UseOvertimePage> {
 
                 Navigator.pop(context);
               },
-              child: const Text("Save"),
+              child: const Text(
+                "Save",
+                style: TextStyle(fontSize: 24.0),
+              ),
             ),
           ),
         ],

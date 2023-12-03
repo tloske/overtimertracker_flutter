@@ -52,6 +52,7 @@ class _AddOvertimePageState extends State<AddOvertimePage> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
@@ -179,7 +180,10 @@ class _AddOvertimePageState extends State<AddOvertimePage> {
               );
               Navigator.pop(context);
             },
-            child: const Text("Save"),
+            child: const Text(
+              "Save",
+              style: TextStyle(fontSize: 24.0),
+            ),
           )
         ],
       ),
