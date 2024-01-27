@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:overtimertracker_flutter/Models/Providers/ad_provider.dart';
 import 'package:overtimertracker_flutter/Utils/save_manager.dart';
 
 import '../overtime_data.dart';
 
-class OvertimeProvider extends ChangeNotifier {
-  OvertimeProvider() {
+class OvertimeProvider extends AdProvider {
+  OvertimeProvider() : super() {
     loadData();
   }
 

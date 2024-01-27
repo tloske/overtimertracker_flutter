@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:overtimertracker_flutter/Models/Providers/overtime_provider.dart';
 import 'dart:math' as math;
+
+import 'package:provider/provider.dart';
 
 class ExpandableFab extends StatefulWidget {
   const ExpandableFab(
@@ -45,6 +48,7 @@ class _ExpandableFabState extends State<ExpandableFab>
   }
 
   void _toggle() {
+    Provider.of<OvertimeProvider>(context, listen: false).bShowAd = _open;
     setState(() {
       _open = !_open;
       if (_open) {

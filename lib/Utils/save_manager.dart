@@ -18,7 +18,7 @@ class SaveManager {
     if (await File(p.join(appDirPath, fileName)).exists()) {
       File file = File(p.join(appDirPath, fileName));
       String data = await file.readAsString();
-      return jsonDecode(data) as List<dynamic>;
+      return jsonDecode(data);
     }
     return null;
   }

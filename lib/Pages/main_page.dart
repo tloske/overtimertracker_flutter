@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:overtimertracker_flutter/Models/Providers/holiday_provider.dart';
+import 'package:overtimertracker_flutter/Pages/holiday_page.dart';
 import 'package:overtimertracker_flutter/Pages/overtime_page.dart';
 import 'package:provider/provider.dart';
 
-import '../Components/overtime_list.dart';
 import '../Models/Providers/overtime_provider.dart';
 
 class MainPage extends StatefulWidget {
@@ -21,8 +22,8 @@ class _MainPageState extends State<MainPage> {
       child: const OvertimePage(),
     ),
     ChangeNotifierProvider(
-      create: (context) => OvertimeProvider(),
-      child: const OvertimePage(),
+      create: (context) => HolidayProvider(),
+      child: const HolidayPage(),
     ),
   ];
 
@@ -40,8 +41,8 @@ class _MainPageState extends State<MainPage> {
               label: "Overtime",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.punch_clock),
-              label: "Overtime",
+              icon: Icon(Icons.beach_access),
+              label: "Holiday",
             ),
           ],
         ),

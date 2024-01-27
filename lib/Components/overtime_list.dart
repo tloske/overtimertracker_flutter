@@ -9,42 +9,45 @@ class OvertimeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        for (OvertimeData data
-            in Provider.of<OvertimeProvider>(context).overtimeDataList)
-          Dismissible(
-              key: UniqueKey(),
-              direction: DismissDirection.endToStart,
-              background: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  shape: BoxShape.rectangle,
-                  border: Border.all(
-                    width: 2.0,
-                    color: Theme.of(context).colorScheme.secondary,
+    return Flexible(
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          for (OvertimeData data
+              in Provider.of<OvertimeProvider>(context).overtimeDataList)
+            Dismissible(
+                key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      width: 2.0,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Icon(Icons.delete, size: 50),
+                    ),
                   ),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(right: 8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(Icons.delete, size: 50),
-                  ),
-                ),
-              ),
-              onDismissed: (direction) {
-                Provider.of<OvertimeProvider>(context, listen: false)
-                    .removeOvertime(data);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    backgroundColor: Colors.red,
-                    content: Text("Overtime deleted"),
-                  ),
-                );
-              },
-              child: OvertimeCard(overtimeData: data)),
-      ],
+                onDismissed: (direction) {
+                  Provider.of<OvertimeProvider>(context, listen: false)
+                      .removeOvertime(data);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text("Overtime deleted"),
+                    ),
+                  );
+                },
+                child: OvertimeCard(overtimeData: data)),
+        ],
+      ),
     );
   }
 }
