@@ -13,7 +13,7 @@ class HolidayList extends StatelessWidget {
         shrinkWrap: true,
         children: [
           for (String key
-              in Provider.of<HolidayProvider>(context).holidayDataList.keys)
+              in Provider.of<HolidayProvider>(context).getSortedKeys())
             ExpandableList(
                 data: Provider.of<HolidayProvider>(context)
                         .holidayDataList[key] ??

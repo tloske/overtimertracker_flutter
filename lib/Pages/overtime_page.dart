@@ -37,7 +37,7 @@ class _OvertimePageState extends State<OvertimePage> {
           padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
-              const Text("Overtime Tracker"),
+              const Text("Overtime"),
               Text(
                 "Overtime: ${Provider.of<OvertimeProvider>(context).overtimeSum.toStringAsFixed(2)} ${Provider.of<OvertimeProvider>(context).overtimeSum == 1 ? 'hour' : 'hours'}",
                 style: const TextStyle(fontSize: 16),

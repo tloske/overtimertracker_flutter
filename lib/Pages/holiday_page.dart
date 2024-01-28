@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:overtimertracker_flutter/Components/holiday_list.dart';
 import 'package:overtimertracker_flutter/Models/Providers/holiday_provider.dart';
-import 'package:overtimertracker_flutter/Models/holiday_data.dart';
 import 'package:overtimertracker_flutter/Pages/add_holiday_page.dart';
 import 'package:provider/provider.dart';
 
@@ -24,14 +23,14 @@ class HolidayPage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         centerTitle: true,
-        title: const Padding(
-          padding: EdgeInsets.all(5.0),
+        title: Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
-              Text("Holidays"),
+              const Text("Holidays"),
               Text(
-                "Remaining this year: 24",
-                style: TextStyle(fontSize: 16),
+                "Remaining this year: ${Provider.of<HolidayProvider>(context).remainingDaysInYear}",
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),
